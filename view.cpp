@@ -109,3 +109,12 @@ void view::startGUI(model* model_ptr){
         controller::open_recent_file(model_ptr, recently_edited_files[button_pushed-1]);
     }
 }
+
+graphic_primitive* create_graphic_primitive(){
+    graphic_primitive* pr_ptr = new graphic_primitive();
+    return pr_ptr;
+}
+
+void delete_graphic_primitive(graphic_primitive* primitive_ptr){
+    delete primitive_ptr;
+}

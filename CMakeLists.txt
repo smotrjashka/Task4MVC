@@ -7,7 +7,7 @@ project(Task4 VERSION ${PROJECT_VERSION})
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Task4 main.cpp import_helper.cpp import_helper.h export_helper.cpp export_helper.h filesDAO.cpp filesDAO.h our_file.cpp our_file.h file_system_helper.cpp file_system_helper.h our_file_content.cpp our_file_content.h view.cpp view.h controller.cpp controller.h model.cpp model.h)
+add_executable(Task4 main.cpp import_helper.cpp import_helper.h export_helper.cpp export_helper.h filesDAO.cpp filesDAO.h our_file.cpp our_file.h file_system_helper.cpp file_system_helper.h our_file_content.cpp our_file_content.h view.cpp view.h controller.cpp controller.h model.cpp model.h graphic_primitive.cpp graphic_primitive.h)
 
 set_target_properties(
         Task4 PROPERTIES

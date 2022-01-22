@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include "model.h"
+#include "graphic_primitive.h"
 
 namespace view {
 
@@ -16,6 +17,9 @@ namespace view {
     void create_buttons_for_treat_fle(model* model_ptr);
     void invoke_GUI_for_search_file_in_file_system(model* model_ptr);
     void startGUI(model* model_ptr);
+
+    graphic_primitive* create_graphic_primitive();
+    void delete_graphic_primitive(graphic_primitive* primitive_ptr);
 
 
 };
