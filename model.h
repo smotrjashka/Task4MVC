@@ -6,6 +6,7 @@
 
 class model {
 
+public:
     model();
     model(our_file* file);
 

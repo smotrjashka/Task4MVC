@@ -47,7 +47,7 @@ void view::get_starter_interface(std::vector<std::string>& recently_edited_files
 }
 
 
-void view::create_buttons_for_treat_fle(model::model* model_ptr){
+void view::create_buttons_for_treat_fle(model* model_ptr){
     ///тут я имитирую работу кнопочек так же как в старт гуи
     ///в приниципе кнопку клоуз надо было заделать ещё в старт гуи но сделаем вид что появляется у нас она только тут (не повторять в реальной жизни)
     ///1 - типа редактируем файл
@@ -77,14 +77,14 @@ void view::create_buttons_for_treat_fle(model::model* model_ptr){
     }
 }
 
-void view::invoke_GUI_for_search_file_in_file_system(){
+void view::invoke_GUI_for_search_file_in_file_system(model* model_ptr){
     ///тут я упрощу и сделаю вид что пользователь типа обязом выберет какой-то файл, хотя в реальности такой функционал не прокатил бы)
     std::tuple<std::string, std::string> folder_file_name;
     folder_file_name = file_system_helper::open_file();
-    controller::create_file(std::get<0>(folder_file_name), std::get<1>(folder_file_name));
+    controller::create_file(model_ptr, std::get<0>(folder_file_name), std::get<1>(folder_file_name));
 }
 
-void view::startGUI(model::model* model_ptr){
+void view::startGUI(model* model_ptr){
     std::vector<std::string> recently_edited_files;
     std::vector<std::string> recently_edited_file_views_id;
     get_starter_interface(recently_edited_files, recently_edited_file_views_id);

@@ -2,7 +2,7 @@
 
 model::model() : new_file(nullptr){}
 
-model::model(our_file* file) : new_file(file);
+model::model(our_file* file) : new_file(file){}
 
 our_file* model::File(){
     return new_file;
