@@ -77,14 +77,14 @@ void view::create_buttons_for_treat_fle(model* model_ptr){
     }
 }
 
-void view::invoke_GUI_for_search_file_in_file_system(model* model_ptr){
+void view::invoke_GUI_for_search_file_in_file_system(std::unique_ptr<model> model_ptr){
     ///тут я упрощу и сделаю вид что пользователь типа обязом выберет какой-то файл, хотя в реальности такой функционал не прокатил бы)
     std::tuple<std::string, std::string> folder_file_name;
     folder_file_name = file_system_helper::open_file();
-    controller::create_file(model_ptr, std::get<0>(folder_file_name), std::get<1>(folder_file_name));
+    controller::create_file(model_ptr.get(), std::get<0>(folder_file_name), std::get<1>(folder_file_name));
 }
 
-void view::startGUI(model* model_ptr){
+void view::startGUI(std::unique_ptr<model> model_ptr){
     std::vector<std::string> recently_edited_files;
     std::vector<std::string> recently_edited_file_views_id;
     get_starter_interface(recently_edited_files, recently_edited_file_views_id);
@@ -101,12 +101,12 @@ void view::startGUI(model* model_ptr){
     std::cout << "for imaginary open recent files choose number grater than 0 and less then " << recently_edited_files.size() << std::endl;
     std::cin >> button_pushed;
     if (button_pushed == 0){
-        controller::create_new_file(model_ptr);
+        controller::create_new_file(model_ptr.get());
     } else if (button_pushed == 5) {
-        invoke_GUI_for_search_file_in_file_system(model_ptr);
+        invoke_GUI_for_search_file_in_file_system(move(model_ptr));
     } else {
         ///помним поскольку это имитация тут только корректное число
-        controller::open_recent_file(model_ptr, recently_edited_files[button_pushed-1]);
+        controller::open_recent_file(model_ptr.get(), recently_edited_files[button_pushed-1]);
     }
 }
 

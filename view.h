@@ -5,6 +5,7 @@
 #include <string>
 #include "model.h"
 #include "graphic_primitive.h"
+#include <memory>
 
 namespace view {
 
@@ -15,8 +16,8 @@ namespace view {
     void fill_squears_with_recent_files_names_view(const std::vector<std::string>& vector1, std::vector<std::string>& views_id);
     void get_starter_interface(std::vector<std::string>& recently_edited_files, std::vector<std::string>& recently_edited_file_views_id);
     void create_buttons_for_treat_fle(model* model_ptr);
-    void invoke_GUI_for_search_file_in_file_system(model* model_ptr);
-    void startGUI(model* model_ptr);
+    void invoke_GUI_for_search_file_in_file_system(std::unique_ptr<model> model_ptr);
+    void startGUI(std::unique_ptr<model> model_ptr);
 
     graphic_primitive* create_graphic_primitive();
     void delete_graphic_primitive(graphic_primitive* primitive_ptr);
