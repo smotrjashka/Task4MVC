@@ -5,8 +5,8 @@
 #include "filesDAO.h"
 
 void controller::create_new_file(model* model_ptr){
-    our_file* new_file = new our_file();
-    model_ptr->File(new_file);
+    std::unique_ptr<our_file> new_file = std::make_unique<our_file>(our_file());
+    model_ptr->File(move(new_file));
     std::cout << "тут мы меняем всю гуишку на окошко с кнопочками возможности редактирования файла" << std::endl;
     view::create_buttons_for_treat_fle(model_ptr);
 }
@@ -18,8 +18,8 @@ void controller::get_recent_files(std::vector<std::string>& recently_edited_file
 void controller::create_file(model* model_ptr, std::string& folder, std::string& file_name){
 
     our_file_content* file_content = import_helper::import_file(folder, file_name);
-    our_file* new_file = new our_file(file_name, folder, *file_content);
-    model_ptr->File(new_file);
+    std::unique_ptr<our_file> new_file = std::make_unique<our_file>(file_name, folder, *file_content);
+    model_ptr->File(move(new_file));
     std::cout << "тут мы меняем всю гуишку на окошко с кнопочками возможности редактирования файла" << std::endl;
     view::create_buttons_for_treat_fle(model_ptr);
 }

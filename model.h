@@ -1,20 +1,21 @@
 #ifndef TASK4_MODEL_H
 #define TASK4_MODEL_H
 
-
+#include <memory>
 #include "our_file.h"
 
 class model {
 
 public:
     model();
-    model(our_file* file);
+    model(std::unique_ptr<our_file> file);
+    ~model();
 
     our_file* File();
-    void File(our_file* file);
+    void File(std::unique_ptr<our_file> file);
 
 private:
-    our_file* new_file;
+    std::unique_ptr<our_file> new_file;
 
 
 };
