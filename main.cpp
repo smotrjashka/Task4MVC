@@ -6,7 +6,7 @@
 
 int main() {
 
-    std::unique_ptr<model> model_ptr = std::make_unique<model>(model());
+    std::unique_ptr<model> model_ptr = std::make_unique<model>();
     view::startGUI(move(model_ptr));
 
     //тут надо бы сделать ещё возможность сейф клоуз программы но как?
